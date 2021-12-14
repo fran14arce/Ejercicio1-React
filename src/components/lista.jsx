@@ -2,7 +2,13 @@ import React from 'react';
 
 import ComponenteLista from './componenteLista';
 
-export default function ComponenteEj(props) {
+export default function Lista(props) {
+let listaComponentes = [];
+
+  for (let i = 0; i < props.elementos.length; i++) {
+    listaComponentes.push(<ComponenteLista texto={props.elementos[i]} />);
+  }
+
   return (
     <div>
       {props.titulo}
