@@ -1,8 +1,7 @@
 import React from 'react';
 
-
-import Etiqueta1 from './components/etiqueta1';
-import Lista from './components/lista';
+import Etiqueta1 from './components/Etiqueta1';
+import Lista from './components/Lista';
 
 export default function App() {
   const elementos1 = [
@@ -18,10 +17,10 @@ export default function App() {
 
   return (
     <div>
-      <h1>Hola (desde componente)</h1>
-      <Lista titulo="Componente 1" icono=":(" elementos={elementos1} />
-      <Lista titulo="Componente 2" icono=":*" elementos={elementos2} />
-      <Lista titulo="Componente 3" icono=";)" elementos={elementos3} />
+      <h1>Listas de tareas</h1>
+      <Lista titulo="Tareas de la casa" icono="😁" elementos={elementos1} />
+      <Lista titulo="Lista de la compra" icono="😅" elementos={elementos2} />
+      <Lista titulo="ToDo del curso" icono="🤩" elementos={elementos3} />
     </div>
   );
 }
