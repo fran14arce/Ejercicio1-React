@@ -11,6 +11,7 @@ export default function Lista(props) {
         <ComponenteLista
           done={props.elementos[i].done}
           texto={props.elementos[i].texto}
+          prioridad={props.elementos[i].prioridad}
         />
       );
     }
