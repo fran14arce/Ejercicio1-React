@@ -3,26 +3,23 @@ import React from 'react';
 import ComponenteLista from './componenteLista';
 
 export default function Lista(props) {
-let listaComponentes = [];
+  const listaComponentes = [];
 
-  for (let i = 0; i < props.elementos.length; i++) {
-    listaComponentes.push(<ComponenteLista texto={props.elementos[i]} />);
+  if (props.elementos !== undefined) {
+    for (let i = 0; i < props.elementos.length; i++) {
+      listaComponentes.push(
+        <ComponenteLista
+          done={props.elementos[i].done}
+          texto={props.elementos[i].texto}
+        />
+      );
+    }
   }
 
   return (
     <div>
-      {props.titulo}
-      <ul>
-        <ComponenteLista
-          texto={'Componente 1: ' + props.titulo + ' ' + props.icono}
-        />
-        <ComponenteLista
-          texto={'Componente 2: ' + props.titulo + ' ' + props.icono}
-        />
-        <ComponenteLista
-          texto={'Componente 3: ' + props.titulo + ' ' + props.icono}
-        />
-      </ul>
+      {props.titulo} - {props.icono}
+      <ul>{listaComponentes}</ul>
     </div>
   );
 }
