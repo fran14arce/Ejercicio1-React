@@ -7,19 +7,18 @@ class ListaClase extends React.Component {
     super(props);
     this.listaInicial = [];
 
-    if (props.elementos !== undefined) {
-      for (let i = 0; i < props.elementos.length; i++) {
+    if (this.props.elementos !== undefined) {
+      for (let i = 0; i < this.props.elementos.length; i++) {
         this.listaInicial.push(
           <ComponenteListaClase
-            done={props.elementos[i].done}
-            texto={props.elementos[i].texto}
-            prioridad={props.elementos[i].prioridad}
+            done={this.props.elementos[i].done}
+            texto={this.props.elementos[i].texto}
+            prioridad={this.props.elementos[i].prioridad}
           />
         );
       }
     }
-    this.valorTextInput = useRef();
-    this.valorPrioridadSelect = useRef();
+    
     this.state = { listaActual: this.listaInicial, 
     valorTextInput: this.valorTextInput,
     valorPrioridadSelect: this.valorPrioridadSelect};
@@ -27,14 +26,14 @@ class ListaClase extends React.Component {
 
   funcion() {
     this.listaInicial = 
-    listaComponentes.concat(
+    this.listaInicial.concat(
       <ComponenteListaClase
         texto={valorTextInput.current.value}
         prioridad={valorPrioridadSelect.current.value}
       />
     );
     setListaComponentes(newLista);
-    valorTextInput.current.value = ''; 
+    this.valorTextInput.current.value = ''; 
     this.changeStatus();
   }
 
@@ -45,22 +44,22 @@ class ListaClase extends React.Component {
   render() {
     return (
       <div>
-        {props.titulo} - {props.icono}
-        <ul>{listaComponentes}</ul>
+        {this.props.titulo} - {this.props.icono}
+        <ul>{this.listaComponentes}</ul>
         <li>
           <input
-            ref={valorTextInput}
+            ref={this.state.valorTextInput}
             type="text"
             placeholder="Introduce una tarea"
           />
           <br />
-          <select name="prioridad" ref={valorPrioridadSelect}>
+          <select name="prioridad" ref={this.state.valorPrioridadSelect}>
             <option value="baja">Prioridad Baja</option>
             <option value="media">Prioridad Media</option>
             <option value="alta">Prioridad Alta</option>
           </select>
           <br />
-          <button onClick={funcion}>Añadir</button>
+          <button onClick={this.funcion}>Añadir</button>
         </li>
         <br />
       </div>
