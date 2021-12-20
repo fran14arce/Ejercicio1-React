@@ -22,7 +22,7 @@ class ComponenteListaClase extends React.Component {
   }
 
   changeStatus() {
-    this.setState({done: !this.state.done});
+    this.setState({ done: !this.state.done });
   }
 
   render() {
