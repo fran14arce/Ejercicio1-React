@@ -7,33 +7,34 @@ class ListaClase extends React.Component {
     super(props);
     this.listaInicial = [];
 
-    if (this.props.elementos !== undefined) {
-      for (let i = 0; i < this.props.elementos.length; i++) {
+    if (props.elementos !== undefined) {
+      for (let i = 0; i < props.elementos.length; i++) {
         this.listaInicial.push(
           <ComponenteListaClase
-            done={this.props.elementos[i].done}
-            texto={this.props.elementos[i].texto}
-            prioridad={this.props.elementos[i].prioridad}
+            done={props.elementos[i].done}
+            texto={props.elementos[i].texto}
+            prioridad={props.elementos[i].prioridad}
           />
         );
       }
     }
     
-    this.state = { listaActual: this.listaInicial, 
-    valorTextInput: this.valorTextInput,
-    valorPrioridadSelect: this.valorPrioridadSelect};
+    this.state = { 
+      listaActual: this.listaInicial, 
+    };
   }
 
   funcion() {
+    for (let i = 0; i < this.listaInicial.length; i++) {
+      console.log(this.listaInicial[i]);
+    }
+
     this.listaInicial = 
     this.listaInicial.concat(
       <ComponenteListaClase
-        texto={valorTextInput.current.value}
-        prioridad={valorPrioridadSelect.current.value}
+        texto='HOLA'
       />
     );
-    setListaComponentes(newLista);
-    this.valorTextInput.current.value = ''; 
     this.changeStatus();
   }
 
@@ -45,21 +46,20 @@ class ListaClase extends React.Component {
     return (
       <div>
         {this.props.titulo} - {this.props.icono}
-        <ul>{this.listaComponentes}</ul>
+        <ul>{this.listaInicial}</ul>
         <li>
           <input
-            ref={this.state.valorTextInput}
             type="text"
             placeholder="Introduce una tarea"
           />
           <br />
-          <select name="prioridad" ref={this.state.valorPrioridadSelect}>
+          <select name="prioridad">
             <option value="baja">Prioridad Baja</option>
             <option value="media">Prioridad Media</option>
             <option value="alta">Prioridad Alta</option>
           </select>
           <br />
-          <button onClick={this.funcion}>Añadir</button>
+          <button onClick={this.funcion()}>Añadir</button>
         </li>
         <br />
       </div>
