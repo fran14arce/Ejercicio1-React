@@ -30,4 +30,5 @@ export default function ComponenteLista(props) {
 
 ComponenteLista.defaultProps = {
   prioridad: 'baja',
+  
 };
