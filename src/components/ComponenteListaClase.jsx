@@ -5,29 +5,35 @@ import './componente-lista.css';
 class ComponenteListaClase extends React.Component {
   constructor(props) {
     super(props);
-    this.done = props.done;
+    this.state = {
+      done: props.done,
+    };
     this.texto = props.texto;
     this.prioridad = props.prioridad;
-    this.setElementClass();
   }
 
   setElementClass() {
     this.claseLista = this.prioridad;
-    if (this.done) {
+    if (this.state.done) {
       this.claseLista += ' el-done';
     } else {
       this.claseLista += ' el-undone';
     }
   }
 
-  setTaskStatus() {
-    this.done = !this.done;
+  changeStatus() {
+    this.setState({done: !this.state.done});
   }
 
   render() {
+    this.setElementClass();
     return (
       <li className={this.claseLista}>
-        <input type="checkbox" onChange={this.setTaskStatus} />
+        <input
+          type="checkbox"
+          defaultChecked={this.state.done}
+          onChange={this.changeStatus.bind(this)}
+        />
         {this.texto}
       </li>
     );
