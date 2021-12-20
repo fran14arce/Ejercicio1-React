@@ -25,20 +25,13 @@ class ListaClase extends React.Component {
   }
 
   funcion() {
-    for (let i = 0; i < this.listaInicial.length; i++) {
-      console.log(this.listaInicial[i]);
-    }
-
     this.listaInicial = 
     this.listaInicial.concat(
       <ComponenteListaClase
         texto='HOLA'
       />
     );
-    this.changeStatus();
-  }
 
-  changeStatus() {
     this.setState({listaActual: this.listaInicial});
   }
 
@@ -46,7 +39,7 @@ class ListaClase extends React.Component {
     return (
       <div>
         {this.props.titulo} - {this.props.icono}
-        <ul>{this.listaInicial}</ul>
+        <ul>{this.state.listaActual}</ul>
         <li>
           <input
             type="text"
@@ -59,7 +52,7 @@ class ListaClase extends React.Component {
             <option value="alta">Prioridad Alta</option>
           </select>
           <br />
-          <button onClick={this.funcion()}>Añadir</button>
+          <button onClick={()=>this.funcion()}>Añadir</button>
         </li>
         <br />
       </div>
