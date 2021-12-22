@@ -30,7 +30,7 @@ class ListaClase extends React.Component {
     this.selectPrioridad;
   }
 
-  /**Método que será llamado cuando se pulse el botón. Añade a la 
+  /*Método que será llamado cuando se pulse el botón. Añade a la 
   lista el componente creado a partir del inputText y el dropDown
   y llama al método changeState para establecer un nuevo estado.*/
   funcion() {
