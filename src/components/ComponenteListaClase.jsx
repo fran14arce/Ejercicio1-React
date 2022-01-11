@@ -8,8 +8,8 @@ class ComponenteListaClase extends React.Component {
     this.state = {
       done: props.done,
     };
-    this.texto = props.texto;
     this.prioridad = props.prioridad;
+    this.texto = props.texto;
   }
 
   setElementClass() {
