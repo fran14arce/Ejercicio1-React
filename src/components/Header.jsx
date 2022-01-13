@@ -7,12 +7,25 @@ import './header.css';
 class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      clicked: false,
+    };
+  }
+
+  changeClicked() {
+    this.setState({clicked: !this.state.clicked});
   }
 
   render() {
     return (
-      <nav>
-        <h1>Mi aplicación</h1>
+      <nav className="header-navbar">
+        <div className="navbar-logo">
+          <img
+            className="logo-image"
+            src="https://eu01.edcwb.com/buscador/img/centros/logogrande/7348-a9c730d6b2b644f5b9910364ba6af277.jpg"
+          />
+          <i className="fas fa-user-graduate" />
+        </div>
         {/*
         <ul>{this.createMenuLinks()}</ul>
         <ul>
@@ -26,16 +39,19 @@ class Header extends React.Component {
           })}
         </ul>
         */}
-        <ul>
+        <ul className={this.state.clicked ? 'navbar-menu active' : 'navbar-menu'}>
           {/* Forma 3: map (función flecha) */}
           {MenuItems.map((item) => {
             return (
-              <li key={item.id}>
+              <li key={item.id} className="navbar-link">
                 <Link to={item.path}>{item.title}</Link>
               </li>
             );
           })}
         </ul>
+        <div className="menu-icon" onClick={this.changeClicked.bind(this)}>
+          <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'} />
+        </div>
       </nav>
     );
   }
