@@ -13,7 +13,7 @@ class Header extends React.Component {
   }
 
   changeClicked() {
-    this.setState({clicked: !this.state.clicked});
+    this.setState({ clicked: !this.state.clicked });
   }
 
   render() {
@@ -39,12 +39,16 @@ class Header extends React.Component {
           })}
         </ul>
         */}
-        <ul className={this.state.clicked ? 'navbar-menu active' : 'navbar-menu'}>
+        <ul
+          className={this.state.clicked ? 'navbar-menu active' : 'navbar-menu'}
+        >
           {/* Forma 3: map (función flecha) */}
           {MenuItems.map((item) => {
             return (
-              <li key={item.id} className="navbar-link">
-                <Link to={item.path}>{item.title}</Link>
+              <li key={item.id}>
+                <Link className="navbar-link" to={item.path} onClick={this.changeClicked.bind(this)}>
+                  {item.title}
+                </Link>
               </li>
             );
           })}
