@@ -6,12 +6,14 @@ import { PaginaListas } from './components/PaginaListas';
 import { Perfil } from './components/Perfil';
 import Header from './components/Header';
 import { MenuItems } from './data/MenuItems';
+import BootstrapHeader from './components/BootstrapHeader';
 
 export function App() {
   return (
 
     <Router>
       <Header />
+      <BootstrapHeader />
       {MenuItems.map((item) => {
         return (
           <Route
