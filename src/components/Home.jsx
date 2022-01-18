@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Table } from 'react-bootstrap';
+import { ElementosTabla } from '../data/ElementosTabla';
+
 
 export function Home() {
   return (
@@ -9,30 +11,23 @@ export function Home() {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Usuario</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {ElementosTabla.map((item) => {
+            return (
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.nombre}</td>
+                <td>{item.apellido}</td>
+                <td>{item.usuario}</td>
+              </tr>
+            );
+            })}
         </tbody>
       </Table>
     </div>

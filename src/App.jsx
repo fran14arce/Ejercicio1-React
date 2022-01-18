@@ -12,7 +12,9 @@ export function App() {
   return (
 
     <Router>
+      {/*
       <Header />
+      */}
       <BootstrapHeader />
       {MenuItems.map((item) => {
         return (
