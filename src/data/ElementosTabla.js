@@ -4,30 +4,40 @@ export const ElementosTabla = [
     id: 1,
     nombre: 'Francisco',
     apellido: 'Arce',
-    usuario: 'farce'
+    usuario: 'farce',
+    imagen: '',
+    notaMedia: '8'
   },
   {
     id: 2,
     nombre: 'Daniel',
     apellido: 'Ferrer',
-    usuario: 'dferrer'
+    usuario: 'dferrer',
+    imagen: '',
+    notaMedia: ''
   },
   {
     id: 3,
     nombre: 'Eduardo',
     apellido: 'Cardeñosa',
-    usuario: 'ecardeñosa'
+    usuario: 'ecardeñosa',
+    imagen: '',
+    notaMedia: ''
   },
   {
     id: 4,
     nombre: 'Alejandro',
     apellido: 'Fdez. Tolosa',
-    usuario: 'afernandez'
+    usuario: 'afernandez',
+    imagen: '',
+    notaMedia: ''
   },
   {
     id: 5,
     nombre: 'Pedro',
     apellido: 'Ibarguren',
-    usuario: 'pibarguren'
+    usuario: 'pibarguren',
+    imagen: '',
+    notaMedia: ''
   }
 ];
