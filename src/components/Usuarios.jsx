@@ -42,7 +42,7 @@ class Usuarios extends React.Component {
                 <tbody>
                   {ElementosTabla.map((item) => {
                     return (
-                      <tr onClick={this.changeStateClicked.bind(this)}>
+                      <tr onClick={ () => this.changeStateClicked(item)}>
                         <td>{item.id}</td>
                         <td>{item.nombre}</td>
                         <td>{item.apellido}</td>
