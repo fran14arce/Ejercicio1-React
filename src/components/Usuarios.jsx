@@ -6,6 +6,21 @@ import { ElementosTabla } from '../data/ElementosTabla';
 class Usuarios extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      imagenPulsado: '',
+      nombrePulsado: '',
+      apellidoPulsado: '',
+      notaMediaPulsado: ''
+    };
+  }
+
+  changeStateClicked(item) {
+    this.setState({
+      imagenPulsado: item.imagen,
+      nombrePulsado: item.nombre,
+      apellidoPulsado: item.apellido,
+      notaMediaPulsado: item.notaMedia
+    });
   }
 
   render() {
@@ -27,7 +42,7 @@ class Usuarios extends React.Component {
                 <tbody>
                   {ElementosTabla.map((item) => {
                     return (
-                      <tr>
+                      <tr onClick={this.changeStateClicked.bind(this)}>
                         <td>{item.id}</td>
                         <td>{item.nombre}</td>
                         <td>{item.apellido}</td>
@@ -39,12 +54,12 @@ class Usuarios extends React.Component {
               </Table>
             </Col>
             <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={ElementosTabla[0].imagen} />
+              <Card.Img variant="top" src={this.state.imagenPulsado} />
               <Card.Body>
                 <Card.Title>
-                  {ElementosTabla[0].nombre} {ElementosTabla[0].apellido}
+                  {this.state.nombrePulsado} {this.state.apellidoPulsado}
                 </Card.Title>
-                <Card.Text>{ElementosTabla[0].notaMedia}</Card.Text>
+                <Card.Text>{this.state.notaMediaPulsado}</Card.Text>
               </Card.Body>
             </Card>
             <Col lg={4} md={6}></Col>
