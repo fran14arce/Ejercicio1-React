@@ -9,6 +9,7 @@ class BoostrapHeader extends React.Component {
   constructor(props) {
     super(props);
   }
+  
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
