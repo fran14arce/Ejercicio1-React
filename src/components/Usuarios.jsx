@@ -7,10 +7,10 @@ class Usuarios extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imagenPulsado: '',
-      nombrePulsado: '',
-      apellidoPulsado: '',
-      notaMediaPulsado: ''
+      imagenPulsado: ElementosTabla[0].imagen,
+      nombrePulsado: ElementosTabla[0].nombre,
+      apellidoPulsado: ElementosTabla[0].apellido,
+      notaMediaPulsado: ElementosTabla[0].notaMedia
     };
   }
 
