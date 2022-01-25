@@ -8,9 +8,19 @@ class Home extends React.Component {
     this.login = this.login.bind(this);
   }
   login() {
-    this.setState({ user: this.valorUsuario.value, password: this.valorContraseña.value });
-    console.log(`${this.state.user} Enviado`);
+    this.setState({
+      user: this.valorUsuario.value,
+      password: this.valorContraseña.value,
+    });
   }
+
+  componentDidUnmount() {
+    this.setState({
+      user: localStorage.getItem('user'),
+      password: localStorage.getItem('password'),
+    });
+  }
+
   render() {
     if (
       this.state != null &&
@@ -33,7 +43,7 @@ class Home extends React.Component {
                 <Form.Control
                   type="email"
                   placeholder="Usuario"
-                  ref = {(usuario) => (this.valorUsuario = usuario)}
+                  ref={(usuario) => (this.valorUsuario = usuario)}
                 />
               </Form.Group>
 
@@ -42,7 +52,7 @@ class Home extends React.Component {
                 <Form.Control
                   type="password"
                   placeholder="Contraseña"
-                  ref = {(contraseña) => (this.valorContraseña = contraseña)}
+                  ref={(contraseña) => (this.valorContraseña = contraseña)}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
@@ -56,6 +66,11 @@ class Home extends React.Component {
         </div>
       );
     }
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem('user', this.state.user);
+    localStorage.setItem('password', this.state.password);
   }
 }
 export default Home;
