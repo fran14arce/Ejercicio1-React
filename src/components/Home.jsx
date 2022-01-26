@@ -40,13 +40,13 @@ class Home extends React.Component {
     }
   }
 
-  /*Se ejecuta la primera vez que se ejecuta el componente*//*
+  /*Se ejecuta la primera vez que se ejecuta el componente*/
   componentDidMount() {
     this.setState({
       user: localStorage.getItem('user'),
       password: localStorage.getItem('password'),
     });
-  }*/
+  }
 
   render() {
     if (
