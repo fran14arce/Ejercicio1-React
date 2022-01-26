@@ -1,25 +1,52 @@
 import React from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import { UsuariosAcceso } from '../data/UsuariosAcceso';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { user: '', password: '' };
+    this.state = { user: '', password: '', correo: '', apellido: '', nota: '' };
     this.login = this.login.bind(this);
   }
+
   login() {
-    this.setState({
-      user: this.valorUsuario.value,
-      password: this.valorContraseña.value,
+    var encontrado = false;
+    UsuariosAcceso.map((item) => {
+      if (
+        item.correo === this.valorCorreo.value &&
+        item.pass === this.valorContraseña.value
+      ) {
+        this.setState({
+          user: item.nombre,
+          password: item.pass,
+          correo: item.correo,
+          apellido: item.apellido,
+          nota: item.notaMedia,
+        });
+        localStorage.setItem('user', item.nombre);
+        localStorage.setItem('nombre', item.nombre);
+        localStorage.setItem('password', item.pass);
+        localStorage.setItem('correo', item.correo);
+        localStorage.setItem('apellido', item.apellido);
+        localStorage.setItem('nota', item.notaMedia);
+        localStorage.setItem('imagen', item.imagen);
+        encontrado = true;
+      }
     });
+    if (!encontrado) {
+      alert(
+        'El usuario y la contraseña introducidos no se corresponden con ningún registro'
+      );
+    }
   }
 
-  componentDidUnmount() {
+  /*Se ejecuta la primera vez que se ejecuta el componente*//*
+  componentDidMount() {
     this.setState({
       user: localStorage.getItem('user'),
       password: localStorage.getItem('password'),
     });
-  }
+  }*/
 
   render() {
     if (
@@ -39,11 +66,11 @@ class Home extends React.Component {
           <Container>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Nombre usuario</Form.Label>
+                <Form.Label>Correo</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Usuario"
-                  ref={(usuario) => (this.valorUsuario = usuario)}
+                  placeholder="Correo"
+                  ref={(correo) => (this.valorCorreo = correo)}
                 />
               </Form.Group>
 
@@ -68,9 +95,13 @@ class Home extends React.Component {
     }
   }
 
+  /*Se ejecuta cuando se destruye el componente
   componentWillUnmount() {
     localStorage.setItem('user', this.state.user);
     localStorage.setItem('password', this.state.password);
-  }
+    localStorage.setItem('correo', this.state.correo);
+    localStorage.setItem('apellido', this.state.apellido);
+    localStorage.setItem('nota', this.state.nota);
+  }*/
 }
 export default Home;
