@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Card, Container, Table, Row, Col } from 'react-bootstrap';
-import CardPeli from './CardPeli';
 
-class PelisGhibli extends React.Component {
+class FotosNasa extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,14 +16,16 @@ class PelisGhibli extends React.Component {
       selectedItem: item,
     });
   }
-  /*https://developer.spotify.com/documentation/web-api/
-https://developer.spotify.com/
 
-https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=3&country=it?apikey=*/
   async componentDidMount() {
-    const response = await fetch('https://ghibliapi.herokuapp.com/films');
+    const response = await fetch(
+      'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=nf0Ch1m23QtORxmFL0RjeUZ6bBnciP7zqa46fhOf'
+    );
     const responseData = await response.json();
-    this.setState({ tableData: responseData, selectedItem: responseData[0] });
+    this.setState({
+      tableData: responseData['photos'],
+      selectedItem: responseData['photos'][0],
+    });
   }
 
   render() {
@@ -33,24 +34,22 @@ https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=3&country=i
         <Container>
           <Row>
             <Col lg={8} md={6}>
-              <h1>Listado de películas Ghibli</h1>
+              <h1>Fotos NASA</h1>
               <Table striped bordered hover variant="dark">
                 <thead>
                   <tr>
-                    <th>Título</th>
-                    <th>Director</th>
-                    <th>Año</th>
-                    <th>Puntuación</th>
+                    <th>ID Foto</th>
+                    <th>Cámara</th>
+                    <th>Fecha foto</th>
                   </tr>
                 </thead>
                 <tbody>
                   {this.state.tableData.map((item) => {
                     return (
                       <tr onClick={() => this.changeStateClicked(item)}>
-                        <td>{item.title}</td>
-                        <td>{item.director}</td>
-                        <td>{item.release_date}</td>
-                        <td>{item.rt_score}</td>
+                        <td>{item.id}</td>
+                        <td>{item.camera.full_name}</td>
+                        <td>{item.earth_date}</td>
                       </tr>
                     );
                   })}
@@ -60,18 +59,13 @@ https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=3&country=i
             <Col lg={4} md={8}>
               <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                  <Card.Img
-                    variant="top"
-                    src={this.state.selectedItem.image}
-                  ></Card.Img>
-                  <Card.Title>{this.state.selectedItem.title}</Card.Title>
+                  <Card.Title>ID Foto: {this.state.selectedItem.id}</Card.Title>
                   <Card.Text>
-                    Título original: {this.state.selectedItem.original_title}
+                    Fecha de la foto: {this.state.selectedItem.earth_date}
                     <p />
-                    Director: {this.state.selectedItem.director}
-                    <p />
-                    Argumento: {this.state.selectedItem.description}
+                    {/*Cámara: {this.state.selectedItem.camera.full_name}*/}
                   </Card.Text>
+                  <Card.Img src={this.state.selectedItem.img_src}></Card.Img>
                 </Card.Body>
               </Card>
             </Col>
@@ -82,4 +76,4 @@ https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=3&country=i
   }
 }
 
-export default PelisGhibli;
+export default FotosNasa;

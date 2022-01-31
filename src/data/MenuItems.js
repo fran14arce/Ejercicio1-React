@@ -2,7 +2,7 @@ import Home from '../components/Home';
 import { PaginaListas } from '../components/PaginaListas';
 import Perfil from '../components/Perfil';
 import Usuarios from '../components/Usuarios';
-import PelisGhibli from '../components/PelisGhibli';
+import FotosNasa from '../components/FotosNasa';
 
 export const MenuItems = [
   {
@@ -31,9 +31,9 @@ export const MenuItems = [
   },
   {
     id: 4,
-    path: '/PelisGhibli',
-    title: 'Pelis Ghibli',
-    component: PelisGhibli,
+    path: '/FotosNasa',
+    title: 'Fotos NASA',
+    component: FotosNasa,
   },
 ];
 
