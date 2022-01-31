@@ -17,7 +17,10 @@ class PelisGhibli extends React.Component {
       selectedItem: item,
     });
   }
+  /*https://developer.spotify.com/documentation/web-api/
+https://developer.spotify.com/
 
+https://api.musixmatch.com/ws/1.1/chart.artists.get?page=1&page_size=3&country=it?apikey=*/
   async componentDidMount() {
     const response = await fetch('https://ghibliapi.herokuapp.com/films');
     const responseData = await response.json();
@@ -57,7 +60,10 @@ class PelisGhibli extends React.Component {
             <Col lg={4} md={8}>
               <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                  <Card.Img variant="top" src={this.state.selectedItem.image}></Card.Img>
+                  <Card.Img
+                    variant="top"
+                    src={this.state.selectedItem.image}
+                  ></Card.Img>
                   <Card.Title>{this.state.selectedItem.title}</Card.Title>
                   <Card.Text>
                     Título original: {this.state.selectedItem.original_title}
