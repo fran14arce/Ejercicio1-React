@@ -7,13 +7,20 @@ class FotosNasa extends React.Component {
     super(props);
     this.state = {
       tableData: [],
-      selectedItem: '',
+      /*selectedItem: '',*/
+      imagenId: '',
+      camera: '',
+      fecha: '',
     };
   }
 
   changeStateClicked(item) {
     this.setState({
-      selectedItem: item,
+      /*selectedItem: item,*/
+      imagenId: item.id,
+      camera: item.camera,
+      fecha: item.earth_date,
+      imagen: item.img_src
     });
   }
 
@@ -24,7 +31,13 @@ class FotosNasa extends React.Component {
     const responseData = await response.json();
     this.setState({
       tableData: responseData['photos'],
-      selectedItem: responseData['photos'][0],
+      /*selectedItem: responseData['photos'][0], 
+      Para Card se obtienen los elementos específicos, para poder coger de los arrays del elemento
+      (por ejemplo de cámara)*/
+      imagenId: responseData['photos'][0].id,
+      camera: responseData['photos'][0].camera,
+      fecha: responseData['photos'][0].earth_date,
+      imagen: responseData['photos'][0].img_src,
     });
   }
 
@@ -32,9 +45,9 @@ class FotosNasa extends React.Component {
     return (
       <div>
         <Container>
+        <h1>Fotos NASA</h1>
           <Row>
             <Col lg={8} md={6}>
-              <h1>Fotos NASA</h1>
               <Table striped bordered hover variant="dark">
                 <thead>
                   <tr>
@@ -59,13 +72,13 @@ class FotosNasa extends React.Component {
             <Col lg={4} md={8}>
               <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                  <Card.Title>ID Foto: {this.state.selectedItem.id}</Card.Title>
+                  <Card.Title>ID Foto: {this.state.imagenId}</Card.Title>
                   <Card.Text>
-                    Fecha de la foto: {this.state.selectedItem.earth_date}
+                    Fecha de la foto: {this.state.fecha}
                     <p />
-                    {/*Cámara: {this.state.selectedItem.camera.full_name}*/}
+                    Cámara: {this.state.camera.full_name}
                   </Card.Text>
-                  <Card.Img src={this.state.selectedItem.img_src}></Card.Img>
+                  <Card.Img src={this.state.imagen}></Card.Img>
                 </Card.Body>
               </Card>
             </Col>
