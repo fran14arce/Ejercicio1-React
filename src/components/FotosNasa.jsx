@@ -1,5 +1,5 @@
 import React from 'react';
-
+import uuid from 'react-uuid';
 import { Card, Container, Table, Row, Col } from 'react-bootstrap';
 
 class FotosNasa extends React.Component {
@@ -59,7 +59,7 @@ class FotosNasa extends React.Component {
                 <tbody>
                   {this.state.tableData.map((item) => {
                     return (
-                      <tr onClick={() => this.changeStateClicked(item)}>
+                      <tr key={uuid()} onClick={() => this.changeStateClicked(item)}>
                         <td>{item.id}</td>
                         <td>{item.camera.full_name}</td>
                         <td>{item.earth_date}</td>

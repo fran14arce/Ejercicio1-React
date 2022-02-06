@@ -1,5 +1,5 @@
 import React from 'react';
-
+import uuid from 'react-uuid';
 import { Card, Container, Table, Row, Col } from 'react-bootstrap';
 import { ElementosTabla } from '../data/ElementosTabla';
 
@@ -42,7 +42,7 @@ class Usuarios extends React.Component {
                 <tbody>
                   {ElementosTabla.map((item) => {
                     return (
-                      <tr onClick={ () => this.changeStateClicked(item)}>
+                      <tr key={uuid()} onClick={ () => this.changeStateClicked(item)}>
                         <td>{item.id}</td>
                         <td>{item.nombre}</td>
                         <td>{item.apellido}</td>
